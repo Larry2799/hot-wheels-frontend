@@ -8,7 +8,6 @@ import { clearSuccessState } from "../../pages/ShoppingCart/actions";
 
 const EmptyStatePage = ({
   imageUrl,
-  imageSize,
   text,
   routToGo,
   buttonText,
@@ -46,7 +45,6 @@ const EmptyStatePage = ({
 
 EmptyStatePage.propTypes = {
   imageUrl: PropTypes.string,
-  // imageSize: PropTypes.string.oneOfType(["mid, large"]),
   text: PropTypes.string,
   routToGo: PropTypes.string,
   buttonText: PropTypes.string,

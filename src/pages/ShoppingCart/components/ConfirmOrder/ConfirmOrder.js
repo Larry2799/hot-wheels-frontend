@@ -89,7 +89,7 @@ const ConfirmOrder = ({ onSubmit, itemsList }) => {
       onSubmit({ ...formValues, goods: itemsList });
       handleClose();
     },
-    [formValues]
+    [formValues, itemsList, onSubmit]
   );
 
   return (

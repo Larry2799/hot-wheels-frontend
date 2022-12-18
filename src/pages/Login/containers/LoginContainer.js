@@ -24,9 +24,9 @@ const LoginContainer = () => {
   }, [isAuth]);
 
   const onHandleSign = useCallback((body, isSignUpMode) => {
-    const { address, email, companyName, password } = body;
+    const { address, email, companyName, password, role } = body;
     isSignUpMode
-      ? dispatch(signUpStart({ address, email, companyName, password }))
+      ? dispatch(signUpStart({ address, email, companyName, password, role }))
       : dispatch(signInStart({ email, password }));
   }, []);
 

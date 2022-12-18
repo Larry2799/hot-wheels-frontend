@@ -6,18 +6,20 @@ import PrivateRoute from "./PrivateRoute";
 import UserDashboardContainer from "../pages/UserDashboard/containers/UserDashboardContainer";
 import ShopContainer from "../pages/Shop/containers/ShopContainer";
 import ShoppingCartContainer from "../pages/ShoppingCart/containers/ShoppingCartContainer";
+import Administration from "../pages/Administartion/Administration";
 
 export const Routes = () => {
   return (
     <Switch>
       <Route exact path={ROUTES.HOME} component={ShopContainer} />
       <Route exact path={ROUTES.LOGIN} component={LoginContainer} />
+      <PrivateRoute exact path={ROUTES.ADMINISTRATION} component={Administration} />
       <PrivateRoute
         exact
         path={ROUTES.PROFILE}
         component={UserDashboardContainer}
       />
-      <Route exact path={ROUTES.CART} component={ShoppingCartContainer} />
+      <PrivateRoute exact path={ROUTES.CART} component={ShoppingCartContainer} />
     </Switch>
   );
 };

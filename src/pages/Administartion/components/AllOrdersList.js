@@ -1,25 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useStyles } from "./style";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
+import ListItemText from "@material-ui/core/ListItemText";
 import TableContainer from "@material-ui/core/TableContainer";
+import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Typography from "@material-ui/core/Typography";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Typography from "@material-ui/core/Typography";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
+import { useStyles } from "./style";
 
-const OrdersList = ({ orders }) => {
+const AllOrdersList = ({ orders }) => {
   const classes = useStyles();
+
+  console.log(orders[0]);
 
   return (
     <TableContainer component={Paper}>
@@ -50,8 +51,25 @@ const OrdersList = ({ orders }) => {
                       style={{
                         width: "100%",
                         justifyContent: "space-between",
+                        flexDirection: "column",
                       }}
                     >
+                      <ListItemText
+                        style={{ maxWidth: 145, width: "100%" }}
+                        primary={`Компания:`}
+                        secondary={order.customer.companyName}
+                      />
+                      <ListItemText
+                        style={{ maxWidth: 145, width: "100%" }}
+                        primary={`Email:`}
+                        secondary={order.customer.email}
+                      />
+                      <ListItemText
+                        style={{ maxWidth: 145, width: "100%" }}
+                        primary={`Адрес доставки:`}
+                        secondary={order.customer.address}
+                      />
+
                       {order.goods.map((good) => {
                         return (
                           <ListItem
@@ -100,8 +118,4 @@ const OrdersList = ({ orders }) => {
   );
 };
 
-OrdersList.propTypes = {
-  orders: PropTypes.arrayOf(PropTypes.object),
-};
-
-export default React.memo(OrdersList);
+export default AllOrdersList;

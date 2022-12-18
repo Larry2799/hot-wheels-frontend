@@ -136,21 +136,41 @@ const Login = ({
               autoComplete="current-password"
             />
             {isSignUpMode && (
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="confirm"
-                label="Confirm password"
-                value={formValues.confirmPassword}
-                onChange={(event) =>
-                  changeFormField("confirmPassword", event.target.value)
-                }
-                type="password"
-                id="confirm"
-                autoComplete="current-password"
-              />
+              <>
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="confirm"
+                  label="Confirm password"
+                  value={formValues.confirmPassword}
+                  onChange={(event) =>
+                    changeFormField("confirmPassword", event.target.value)
+                  }
+                  type="password"
+                  id="confirm"
+                  autoComplete="current-password"
+                />
+                {/*<FormControl fullWidth margin="normal" variant="outlined">*/}
+                {/*  <InputLabel id="demo-simple-select-standard-label">*/}
+                {/*    Select your role*/}
+                {/*  </InputLabel>*/}
+                {/*  <Select*/}
+                {/*    labelId="demo-simple-select-standard-label"*/}
+                {/*    id="demo-simple-select-standard"*/}
+                {/*    value={formValues.role}*/}
+                {/*    onChange={(event) =>*/}
+                {/*      changeFormField("role", event.target.value)*/}
+                {/*    }*/}
+                {/*    label="Select your role"*/}
+                {/*  >*/}
+                {/*    {Object.values(USER_ROLES).map((role) => (*/}
+                {/*      <MenuItem value={role}>{role}</MenuItem>*/}
+                {/*    ))}*/}
+                {/*  </Select>*/}
+                {/*</FormControl>*/}
+              </>
             )}
             <Button
               type="submit"

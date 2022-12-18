@@ -3,7 +3,6 @@ import { goodsList } from "../../config";
 import "./styles.scss";
 import PropTypes from "prop-types";
 import ShopItemCard from "../ShopItemCard/ShopItemCard";
-import Paper from "@material-ui/core/Paper";
 import { isAlreadyAdded } from "../../../ShoppingCart/utils";
 
 const Shop = ({ handleAddToCart, handleRemoveFromCart, cartItems }) => {

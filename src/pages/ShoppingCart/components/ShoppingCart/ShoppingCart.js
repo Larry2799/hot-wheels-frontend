@@ -9,7 +9,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PropTypes from "prop-types";
-import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { calculateTotalPrice } from "../../utils";
@@ -35,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px 50px",
     margin: "0 auto",
     overflowY: "auto",
+    marginBottom: 70,
   },
   title: {
     width: "100%",
@@ -181,7 +181,9 @@ const ShoppingCart = ({
             <EmptyStatePage
               buttonText={"Перейти в личный кабинет"}
               imageUrl={SuccessSent}
-              text={"Заказ успешно отправлен!"}
+              text={
+                "Заказ успешно оформлен! Наши специалисты свяжуться с Вами в ближайшее время для уточнения деталей"
+              }
               routToGo={"/profile"}
               withDispatch
             />

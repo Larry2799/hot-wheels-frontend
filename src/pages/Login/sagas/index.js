@@ -1,5 +1,5 @@
 import axios from "axios";
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import { put, takeEvery, all } from "redux-saga/effects";
 
 import * as signActions from "../actions/index";
 import * as signAPI from "../api/index";
@@ -8,7 +8,9 @@ import api from "../../../config/apiConfig";
 
 function* signUp(action) {
   try {
+    console.log('sign up', action.payload)
     const response = yield signAPI.signUp(action.payload);
+    console.log('RESP', response)
 
     yield put(signActions.signUpSuccess(response.data));
   } catch (error) {

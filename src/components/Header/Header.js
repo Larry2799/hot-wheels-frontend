@@ -16,9 +16,14 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 
 import { logOutSuccess } from "../../pages/Login/actions";
+import { useAdmin } from "../../hooks/useAdmin";
+import * as actionsShoppingCart from "../../pages/ShoppingCart/actions";
+import logo from "../../static/logo.png";
+import Container from "@material-ui/core/Container";
 
 const Header = ({}) => {
   const { isAuth } = useSelector((state) => state.auth);
+  const isAdmin = useAdmin();
   const { itemsList } = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -49,6 +54,7 @@ const Header = ({}) => {
 
   const onHandleLogout = useCallback(() => {
     dispatch(logOutSuccess());
+    dispatch(actionsShoppingCart.clearSuccessState());
     handleMenuClose();
   }, []);
 
@@ -99,7 +105,11 @@ const Header = ({}) => {
               : () => onHandleNavigate(ROUTES.LOGIN)
           }
         >
-          <Badge  overlap="rectangular"  badgeContent={itemsList.length} color="secondary">
+          <Badge
+            overlap="rectangular"
+            badgeContent={itemsList.length}
+            color="secondary"
+          >
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
@@ -129,13 +139,24 @@ const Header = ({}) => {
             variant="h6"
             noWrap
           >
-            <span style={{fontFamily:'Dancing Script', fontSize:"40px"}}>
-       {"Hot Wheels"}
-            </span>
-
+            {/*<span style={{ fontFamily: "Dancing Script", fontSize: "40px" }}>*/}
+            {/*  {"Hot Wheels"}*/}
+            {/*</span>*/}
+            <Container elevation={0}>
+              <img src={logo} />
+            </Container>
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            {isAdmin && isAuth ? (
+              <Button
+                variant="text"
+                style={{ color: "white" }}
+                onClick={() => onHandleNavigate(ROUTES.ADMINISTRATION)}
+              >
+                Administration
+              </Button>
+            ) : null}
             <IconButton
               className={classes.badge}
               color="inherit"
@@ -145,12 +166,17 @@ const Header = ({}) => {
                   : () => onHandleNavigate(ROUTES.LOGIN)
               }
             >
-              {
-                isAuth?  <Badge  overlap="rectangular"  badgeContent={itemsList.length} color="secondary">
-                  <ShoppingCartIcon />
-                </Badge>: null
-              }
-
+              {isAuth ? (
+                <div>
+                  <Badge
+                    overlap="rectangular"
+                    badgeContent={itemsList.length}
+                    color="secondary"
+                  >
+                    <ShoppingCartIcon />
+                  </Badge>
+                </div>
+              ) : null}
             </IconButton>
             {isAuth ? (
               <IconButton

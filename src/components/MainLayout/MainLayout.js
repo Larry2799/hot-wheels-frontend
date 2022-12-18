@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import Header from "../Header/Header";
 import { checkToken } from "../../actions/globalActions";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
 
 const MainLayout = ({ children }) => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
+
+  console.log(
+    "shoping",
+    useSelector((state) => state)
+  );
 
   useEffect(() => {
     dispatch(checkToken());
@@ -16,6 +21,7 @@ const MainLayout = ({ children }) => {
     <div className="main-container" style={{ overflow: "hidden" }}>
       <Header />
       {children}
+      <Footer />
     </div>
   );
 };

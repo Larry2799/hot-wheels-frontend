@@ -6,6 +6,7 @@ import { createBlacklistFilter } from "redux-persist-transform-filter";
 import auth from "../pages/Login/reducers/index";
 import user from "../pages/UserDashboard/reducers/index";
 import shoppingCart from "../pages/ShoppingCart/reducers/index";
+import administration from "../pages/Administartion/reducers/index";
 
 const saveSubsetBlacklistFilter = createBlacklistFilter("auth", ["error"]);
 
@@ -16,6 +17,11 @@ const persistConfig = {
   transforms: [saveSubsetBlacklistFilter],
 };
 
-const rootReducer = combineReducers({ auth, user, shoppingCart });
+const rootReducer = combineReducers({
+  auth,
+  user,
+  shoppingCart,
+  administration,
+});
 
 export default persistReducer(persistConfig, rootReducer);

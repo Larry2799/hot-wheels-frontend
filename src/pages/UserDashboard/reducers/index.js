@@ -3,6 +3,7 @@ import * as actions from "../actions/index";
 
 export const initialState = {
   info: {},
+  list: [],
   isLoading: false,
   errors: null,
 };

@@ -17,8 +17,10 @@ export default handleActions(
       return { ...state, isLoading: true };
     },
     [actions.signUpSuccess](state, { payload }) {
+        console.log({state, payload})
       return {
         ...state,
+          role: payload.role,
         isLoading: false,
         isAccountCreated: payload.success,
         registerResponseMessage: "Аккаунт успешно создан!",
@@ -41,6 +43,7 @@ export default handleActions(
         isLoading: false,
         accessToken: payload.access_token,
         isAuth: true,
+          role: payload.role
       };
     },
     [actions.signInFail](state, { payload }) {

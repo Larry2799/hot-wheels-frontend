@@ -1,12 +1,15 @@
-import React, { useEffect, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import PropTypes from "prop-types";
+import React, { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ShoppingCart from "../components/ShoppingCart/ShoppingCart";
 import { editItem, removeItemFromOrder, sendOrderStart } from "../actions";
 import { calculateTotalPrice } from "../utils";
 
 const ShoppingCartContainer = ({}) => {
   const { itemsList } = useSelector((state) => state.shoppingCart);
+  console.log(
+    "shoping",
+    useSelector((state) => state)
+  );
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = useCallback(
