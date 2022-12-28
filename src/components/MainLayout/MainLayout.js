@@ -8,11 +8,6 @@ const MainLayout = ({ children }) => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.auth);
 
-  console.log(
-    "shoping",
-    useSelector((state) => state)
-  );
-
   useEffect(() => {
     dispatch(checkToken());
   }, [isAuth]);
